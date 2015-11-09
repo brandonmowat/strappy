@@ -1,7 +1,29 @@
 #!/bin/sh
 
-echo "Creating Website..."
-echo "making directories..."
-mkdir {css,js,img}
-printf "<html>\n<head>\n<title></title>\n</head>\n\n<body>\n</body>\n</html>\n" > index.html
-printf "/*This is where styles will go.*/" > ./css/styles.css
+if [[ $1 ]]; 
+	then
+		## Variables
+		PROJECT_NAME=$1
+		HTML_TOP="<html>\n<head>\n<title></title>\n"
+		HTML_MID="\n</head>\n\n<body>\n"
+		HTML_BOT="\n</body>\n</html>\n"
+		LINK_TO_CSS="<link rel='stylesheet' type='text/css' href='./style.css'>"
+
+		## Functions
+		function makeDirectories () {
+			#mkdir $1 && cd ./$1 && mkdir {css,js,img}
+		}
+
+		## Main
+		makeDirectories $1
+		echo "Creating Website..."
+		#mkdir $1 && cd ./$1
+		echo "making directories..."
+		#mkdir {css,js,img}
+		#printf "<html>\n<head>\n<title></title>\n<link rel='stylesheet' type='text/css' href='./style.css'>\n</head>\n\n<body>\n</body>\n</html>\n" > index.html
+		#printf "/*This is where styles will go.\n\ncreated by STRAPPY (A script the help you get working.)*/" > ./css/styles.css
+
+	else
+		echo "You must specify a project name."
+		echo "usage: strappy project_name"
+fi
