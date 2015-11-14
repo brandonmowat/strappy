@@ -1,4 +1,6 @@
 #!/bin/sh
+# Strappy
+# Created by Brandon Mowat for the University of Toronto
 
 if [[ $1 ]]; 
 	then
@@ -7,21 +9,27 @@ if [[ $1 ]];
 		HTML_TOP="<html>\n<head>\n<title></title>\n"
 		HTML_MID="\n</head>\n\n<body>\n"
 		HTML_BOT="\n</body>\n</html>\n"
-		LINK_TO_CSS="<link rel='stylesheet' type='text/css' href='./style.css'>"
+		LINK_TO_CSS="<link rel='stylesheet' type='text/css' href='./css/style.css'>"
+		LINK_TO_JS="<script src='./js/script.js'></script>"
 
 		## Functions
+
+		# Create directories for our project
 		function makeDirectories () {
-			#mkdir $1 && cd ./$1 && mkdir {css,js,img}
+			echo "making directories..."
+			mkdir $1 && cd ./$1 && mkdir {css,js,img}
 		}
 
+		# Creates supporting files (i.e., style.css, script.js)
+		
+
 		## Main
-		makeDirectories $1
 		echo "Creating Website..."
-		#mkdir $1 && cd ./$1
-		echo "making directories..."
-		#mkdir {css,js,img}
+		makeDirectories $1
 		#printf "<html>\n<head>\n<title></title>\n<link rel='stylesheet' type='text/css' href='./style.css'>\n</head>\n\n<body>\n</body>\n</html>\n" > index.html
-		#printf "/*This is where styles will go.\n\ncreated by STRAPPY (A script the help you get working.)*/" > ./css/styles.css
+		printf "/*This is style.css\nIt's where you can style your website.\n\ncreated by STRAPPY (A script the help you get working.)*/\n\n html,body{margin:0;padding:0;}\nfont-family{'Helvetica Neue',sans-serif}" > ./css/style.css
+		printf "// This is script.js\n// You can write JavaScript for your site in here.\n//" > ./js/script.js
+		printf "$HTML_TOP$LINK_TO_CSS$HTML_MID$LINK_TO_JS$HTML_BOT" > index.html
 
 	else
 		echo "You must specify a project name."
