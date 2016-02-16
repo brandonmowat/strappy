@@ -22,7 +22,6 @@ if [[ $1 ]];
 
 		# Creates supporting files (i.e., style.css, script.js)
 		
-
 		## Main
 		echo "Creating Website..."
 		makeDirectories $1
@@ -30,6 +29,7 @@ if [[ $1 ]];
 		printf "/*This is style.css\nIt's where you can style your website.\n\ncreated by STRAPPY (A script the help you get working.)*/\n\n html,body{margin:0;padding:0;font-family:'Helvetica Neue',sans-serif;}" > ./css/style.css
 		printf "// This is script.js\n// You can write JavaScript for your site in here.\n//" > ./js/script.js
 		printf "$HTML_TOP$LINK_TO_CSS$HTML_MID$LINK_TO_JS$HTML_BOT" > index.html
+		echo "Done."
 
 	else
 		echo "You must specify a project name."
