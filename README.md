@@ -23,3 +23,7 @@ Strappy is an easy to use unix tool to create your website project for you. It c
 		|- script.js
 	|- /img
 ```
+###Todo:
+- Add bootstrap integration
+- Add premade website UI's
+- Make SUPER modular
